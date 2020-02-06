@@ -1,5 +1,6 @@
 'use strict';
 
+const container = document.querySelector('#container');
 const images = container.querySelectorAll('img');
 let mousePrevLeft = 0;
 let mousePrevTop = 0;

@@ -1,5 +1,5 @@
 'use strict';
-
+const container = document.querySelector('#container');
 const images = container.querySelectorAll('img');
 let diffMouseMinusImgX = 0;
 let diffMouseMinusImgY = 0;
