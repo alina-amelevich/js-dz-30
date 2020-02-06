@@ -1,10 +1,10 @@
 'use strict';
-const images = document.querySelectorAll('img');
+
+const images = container.querySelectorAll('img');
 let mousePrevLeft = 0;
 let mousePrevTop = 0;
 let currElem;
 window.addEventListener('load', start);
-
 
 function start() {
     for (let elem of images) {
@@ -29,25 +29,28 @@ function getElementPos(elem) {
 
 function elemMousedown (EO) {
     EO = EO || window.event;
-    console.log('нажатие:' + EO);
     EO.preventDefault();
+    // console.log('нажатие:' + EO);
     currElem = EO.target;
     mousePrevLeft = EO.pageX;
     mousePrevTop = EO.pageY;
+    container.appendChild(currElem);
+    currElem.style.cursor = 'grabbing';
     window.addEventListener('mousemove', elemMousemove);
 }
 
 function elemMouseup (EO) {
-    console.log('снятие:' + EO);
     EO = EO || window.event;
     EO.preventDefault();
+    // console.log('снятие:' + EO);
+    currElem.style.cursor = 'auto';
     window.removeEventListener('mousemove', elemMousemove);
 }
 
 function elemMousemove (EO) {
     EO = EO || window.event;
-    console.log('события движений:' + EO);
     EO.preventDefault();
+    // console.log('события движений:' + EO);
     const mouseLeft = EO.pageX - mousePrevLeft;
     const mouseTop = EO.pageY - mousePrevTop;
     const position = getElementPos(currElem);
@@ -56,4 +59,3 @@ function elemMousemove (EO) {
     mousePrevLeft = EO.pageX;
     mousePrevTop = EO.pageY;
 }
-
